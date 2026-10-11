@@ -2,6 +2,7 @@
 repo_path=/repos/yogyui/HomeNetwork
 
 echo "try to update repository"
+git remote set-url origin https://github.com/hwankook/HomeNetwork.git
 git remote update
 git checkout $(bashio::config 'branch_name')
 git pull

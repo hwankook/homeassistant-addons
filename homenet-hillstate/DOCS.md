@@ -170,6 +170,7 @@ etc:
   elevator_check_command_method: 0
   elevator_packet_command_call_down_value: 6
   elevator_verbose_packet: false
+  elevator_force_register: false
   dimminglight_max_brightness_level: 7
   dimminglight_convert_method: 0
   outlet_handle_power_consumption: false
@@ -177,15 +178,19 @@ etc:
   clear_all_devices: false
   change_device_state_after_command: false
 ```
-- thermo_len_per_dev: 난방 평소 쿼리-응답 패킷의 기기별 패킷 길이 (`3` 혹은 `8`)
+- thermo_len_per_dev: 난방 평소 쿼리-응답 패킷의 기기별 패킷 길이 (`3` 혹은 `8`, 맞지 않으면 자동 판별 후 로그에 안내)
 - thermostat_range_min: 난방 기기 설정 온도 최소값
 - thermostat_range_max: 난방 기기 설정 온도 최대값
 - airconditioner_range_min: 에어컨 기기 설정 온도 최소값
 - airconditioner_range_max: 에어컨 기기 설정 온도 최대값
-- elevator_packet_call_type: 엘리베이터 호출 패킷 타입 (`0` 혹은 `1`) - 개발자에게 문의
+- elevator_packet_call_type: 엘리베이터 호출 패킷 타입
+  - `0`: `F7 0B 01 34 02 41 10 06 00 XX EE` (월패드 명령 형식)
+  - `1`: `F7 0B 01 34 04 41 10 00 06 XX EE` (복도 미니패드 응답 형식, 미니패드 없는 세대)
+  - `2`: 자동 (0/1 형식을 번갈아 전송, 성공 시 로그에 맞는 값 안내)
 - elevator_check_command_method: 엘리베이터 호출 상태 확인 방법 (`0` 혹은 `1`) - 개발자에게 문의
 - elevator_packet_command_call_down_value: 엘리베이터 하행 호출 명령값 (`6` 혹은 `7`) - 개발자에게 문의
 - elevator_verbose_packet: 엘리베이터 관련 RS-485 패킷 로깅 여부
+- elevator_force_register: 엘리베이터 기기를 자동 탐색 없이 강제 등록 (미니패드가 없어 0x34 패킷이 평소에 없는 세대)
 - dimminglight_max_brightness_level: 디밍조명 최고 밝기 레벨 (`1` ~ `255` 사이 값)
 - dimminglight_convert_method: 디밍조명 밝기값 변환 방법 (`0`: 반올림, `1`: 내림, `2`: 올림)
 - outlet_handle_power_consumption: 전원콘센트 소비전력량 사용 여부 (sensor 추가)

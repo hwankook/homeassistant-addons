@@ -11,7 +11,8 @@ RUN apk add --update --no-cache \
 
 # clone repository from GitHub
 RUN mkdir -p /repos/yogyui
-RUN git clone https://github.com/YOGYUI/HomeNetwork.git /repos/yogyui/HomeNetwork
+# fork: hwankook/HomeNetwork (경로는 uwsgi.ini 호환을 위해 그대로 유지)
+RUN git clone https://github.com/hwankook/HomeNetwork.git /repos/yogyui/HomeNetwork
 WORKDIR /repos/yogyui/HomeNetwork/Hillstate-Gwanggyosan
 RUN git config pull.rebase true
 

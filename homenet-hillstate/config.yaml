@@ -1,5 +1,5 @@
 name: HomeNetwork for Hillstate
-version: "1.3.0"
+version: "1.3.1"
 slug: yogyui_homenet_hillstate
 description: RS-485 based HomeNetwork for Hillstate (Hyundai HT)
 arch:
@@ -8,10 +8,9 @@ arch:
   - aarch64
   - amd64
   - i386
-image: yogyui/ha-addon-{arch}-homenet-hillstate
 init: false
 startup: application
-url: https://github.com/YOGYUI/homeassistant-addons/tree/main/homenet-hillstate
+url: https://github.com/hwankook/homeassistant-addons/tree/main/homenet-hillstate
 ingress: true
 ingress_port: 7929
 ingress_entry: /
@@ -103,6 +102,7 @@ options:
     elevator_check_command_method: 0
     elevator_packet_command_call_down_value: 6
     elevator_verbose_packet: false
+    elevator_force_register: false
     dimminglight_max_brightness_level: 7
     dimminglight_convert_method: 0
     outlet_handle_power_consumption: false
@@ -196,10 +196,11 @@ schema:
     thermostat_range_max: int
     airconditioner_range_min: int
     airconditioner_range_max: int
-    elevator_packet_call_type: int(0,1)
+    elevator_packet_call_type: int(0,2)
     elevator_check_command_method: int(0,1)
     elevator_packet_command_call_down_value: int(6,7)?
     elevator_verbose_packet: bool?
+    elevator_force_register: bool?
     dimminglight_max_brightness_level: int(1,255)
     dimminglight_convert_method: int(0,2)
     outlet_handle_power_consumption: bool?

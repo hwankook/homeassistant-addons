@@ -1,3 +1,11 @@
+## 1.3.1
+
+- build locally from fork `hwankook/HomeNetwork` (prebuilt yogyui image removed)
+- elevator_packet_call_type: `2` = auto (alternate type 0 / 1 packets)
+- add parameter: elevator_force_register (register elevator without discovery)
+- thermostat: auto-detect bytes per device (3 / 8) when configured value does not fit
+- RS-485 header statistics / missing line warning in log, packet logger works with single converter and via ingress
+
 ## 1.3.0
 
 - add parameter: outlet options (power consumption sensor, standby cut-off mode switch)
